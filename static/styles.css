@@ -1,0 +1,41 @@
+.pad_bottom{
+    margin-bottom: 15px;
+}
+
+
+.left_div {
+    width: 30%;
+    float: left; 
+}
+
+.content {
+    width: 30%;
+    float: left;
+    background-color: white; /* Optional: Set a background color for the content */
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.squeezed-div {
+    padding-top: 10px;  
+    padding-bottom: 50px;
+    padding-left: 20px;
+
+}
+
+.curvy_div {
+    border-radius: 10px; 
+    background-color: #f0f0f0; 
+    padding: 20px; 
+    box-shadow: 2px 2px 5px #888888; 
+    
+  }
+
+.churn{
+
+    text-align: center;
+}

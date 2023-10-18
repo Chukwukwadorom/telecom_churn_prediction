@@ -1,0 +1,105 @@
+
+    {% extends 'bootstrap/base.html' %}
+    {% import "bootstrap/wtf.html" as wtf %} 
+    
+    {% block content %}
+    {% include "header.html" %}
+
+  
+    <div class="squeezed-div">
+        <h2 class="churn">Telcom Churn prediction </h2>
+
+
+    <div class="left_div curvy_div"> 
+
+     <form method="POST" action = "/">
+
+            {{ form.hidden_tag() }}
+            
+            <div class="form-group">
+                {{ form.network_age(size=8, class="form-control narrow-input", placeholder=form.network_age.label.text)}}
+            </div>
+            
+            <div class="form-group"> 
+                {{ form.Customer_tenure_in_month(size=8, class="form-control", placeholder=form.Customer_tenure_in_month.label.text) }} 
+            </div>
+            
+            <div class="form-group"> 
+                {{form.Total_Spend_in_Months_1_and_2_of_2017(size=8, class="form-control", placeholder=form.Total_Spend_in_Months_1_and_2_of_2017.label.text)}}
+            </div>
+            
+            <div class="form-group"> 
+                {{form.Total_SMS_Spend(size=32, class="form-control",placeholder=form.Total_SMS_Spend.label.text)}}
+            </div>
+        
+
+            <div class="form-group"> 
+                {{form.Total_Data_Spend(size=32, class="form-control", placeholder=form.Total_Data_Spend.label.text)}}
+            </div>
+
+            <div class="form-group"> 
+                {{form.Total_Data_Consumption(size=32, class="form-control",placeholder=form.Total_Data_Consumption.label.text)}}
+            </div>
+
+
+            <div class="form-group"> 
+                {{form.Total_Unique_Calls(size=32, class="form-control", placeholder=form.Total_Unique_Calls.label.text)}}
+            </div>
+            
+            <div class="form-group"> 
+                {{form.Total_Onnet_spend_(size=32, class="form-control", placeholder=form.Total_Onnet_spend_.label.text)}}
+            </div>
+            
+            <div class="form-group">  
+                {{form.Total_Offnet_spend(size=32, class="form-control", placeholder=form.Total_Offnet_spend.label.text)}}
+            </div>
+             
+
+            <div class="form-group"> 
+                {{form.Total_Call_centre_complaint_calls(class="form-control", placeholder=form.Total_Call_centre_complaint_calls.label.text)}}   
+            </div>
+                        
+            
+            <select id="Network_type_subscription_in_Month_1" name="Network_type_subscription_in_Month_1" class="form-control pad_bottom">
+                <option selected disabled>Select Network type subscription in Month 1</option>
+                {% for choice in form.Network_type_subscription_in_Month_1%}
+                    <option value="{{choice.label.text}}">{{ choice.label.text }}</option>
+                {% endfor %}
+            </select>
+            
+            <select id="Network_type_subscription_in_Month_2" name="Network_type_subscription_in_Month_2" class="form-control pad_bottom">
+                <option selected disabled>Select Network type subscription in Month 2</option>
+                {% for choice in form.Network_type_subscription_in_Month_2%}
+                    <option value="{{choice.label.text}}">{{ choice.label.text }}</option>
+                {% endfor %}
+            </select>
+            
+            <select id="Most_Loved_Competitor_network_in_Month_1" name="Most_Loved_Competitor_network_in_Month_1" class="form-control pad_bottom">
+                <option selected disabled>Select Most Loved Competitor network in Month 1</option>
+                {% for choice in form.Most_Loved_Competitor_network_in_Month_1%}
+                    <option value="{{choice.label.text}}">{{ choice.label.text }}</option>
+                {% endfor %}
+            </select>
+            
+            <select id="Most_Loved_Competitor_network_in_Month_2" name="Most_Loved_Competitor_network_in_Month_2" class="form-control pad_bottom">
+                <option selected disabled>Select Most Loved Competitor network in Month 2</option>
+                {% for choice in form.Most_Loved_Competitor_network_in_Month_2%}
+                    <option value="{{choice.label.text}}">{{ choice.label.text }}</option>
+                {% endfor %}
+            </select>
+            
+
+     
+          
+            <button type="submit">Submit</button>
+    </form> 
+
+</div>
+
+<div class="content">hello</div>
+<div class="clearfix"></div>
+</div>
+
+    {% include "footer.html" %}
+
+    {% endblock %}
