@@ -54,15 +54,6 @@ class DataForm(FlaskForm):
     Most_Loved_Competitor_network_in_Month_2 = SelectField('Most Loved Competitor network in Month 2', choices=Most_Loved_Competitor_network)
 
 
-# def make_dataframe(**kwargs):
-#     data ={}
-#     for key, values in kwargs.items():
-#         data[key] = values
-
-#     df = pd.DataFrame(data)
-
-#     return df
-
 
 
 @app.route('/', methods=["POST", "GET"])
@@ -74,8 +65,6 @@ def index():
         data.pop("csrf_token", None)
         df = pd.DataFrame([data])
         df = feature_engineer(df)
-        df.to_csv("foo.csv")
-        print("reached here")
         df, categorical_features, numerical_features  = scale_and_transform(df)
       
         
@@ -92,11 +81,32 @@ def index():
     return render_template("index.html", form = form)
 
 
+# @app.route("/predict_batch", methods = ["POST"])
+# def predict_batch():
+#     pass
+
+
 @app.route("/predict", methods =["POST","GET"])
 def predict():
     # if request.method =="POST":
     # and form.validate_on_submit():
         #convert to dataframe
+
+    if request.method == "POST":
+        data = request.get_json()
+
+        df = pd.DataFrame(data)
+        df = feature_engineer(df)
+        df, categorical_features, numerical_features  = scale_and_transform(df)
+      
+        
+        model = create_model(df, categorical_features, numerical_features)
+        model.load_weights("model_0.7524.h5")
+        
+        pred = model.predict([df[numerical_features].values] + [df[col].values for col in categorical_features])
+        
+        return jsonify(pred.tolist()), 200
+
 
     pred = request.args.get("predictions")
   
