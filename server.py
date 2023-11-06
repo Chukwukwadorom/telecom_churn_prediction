@@ -31,9 +31,6 @@ Bootstrap(app)
      
 
 
-#loading the best_model
-model = tf.keras.models.load_model('best_model.h5')
-
 choice_Network_sub = [('2G', "2G") ,('3G', "3G") ,('Other', "Other"), ('unknown',"unknown")]
 Most_Loved_Competitor_network = [('Uxaa',"Uxaa"), ('Weematel',"Weematel"), ('unknown',"unknown"), ('Zintel',"Zintel"), ('Mango',"Mango"), ('ToCall',"ToCall"), ('PQza',"PQza")]
 
